@@ -1,0 +1,90 @@
+Sure, here's a summary of everything we did to set up and run your Flask application with Docker:
+
+1. **Set Up Docker Environment**
+    - **Install Docker**: Installed Docker in your Codespace environment.
+    - **Verify Installation**: Verified Docker installation with `docker --version`.
+
+2. **Create Dockerfile**
+    - Created a Dockerfile to containerize your Flask application:
+      ```dockerfile
+      CMD ["flask", "run", "--host=0.0.0.0"]
+      ```
+
+3. **Build and Run Docker Container**
+    - **Build Docker Image**: Built the Docker image using:
+      ```sh
+      docker build -t my-flask-app .
+      ```
+    - **Run Docker Container**: Ran the Docker container with:
+      ```sh
+      docker run -p 5001:5000 my-flask-app
+      ```
+
+4. **Set Up Flask Application**
+    - **Flask Routes**: Defined routes for different cities in `app.py`:
+      ```python
+      @app.route('/london')
+      def london():
+            data = generate_fake_data('London')
+            return render_template('london.html', data=data)
+      ```
+
+5. **Generate Fake Data**
+    - **Data Generation Function**: Created a function to generate fake data for each city:
+      ```python
+      def generate_fake_data(city):
+            data = {
+                 "city": city,
+                 "device_id": f"device_{random.randint(1000, 9999)}",
+                 "asset_tag": f"asset_{random.randint(1000, 9999)}",
+                 "connection_status": random.choice(["connected", "disconnected"]),
+                 "error_code": random.choice(["E001", "E002", "E003", "E004", "E005"]),
+                 "timestamp": time.time()
+            }
+            return data
+      ```
+
+6. **Create HTML Templates**
+    - **HTML Templates**: Created HTML templates for each city to display the data:
+      ```html
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+            <meta charset="UTF-8">
+            <title>City Data</title>
+      </head>
+      <body>
+            <h1>{{ data.city }}</h1>
+            <p>Device ID: {{ data.device_id }}</p>
+            <p>Asset Tag: {{ data.asset_tag }}</p>
+            <p>Connection Status: {{ data.connection_status }}</p>
+            <p>Error Code: {{ data.error_code }}</p>
+            <p>Timestamp: {{ data.timestamp }}</p>
+      </body>
+      </html>
+      ```
+
+7. **Run Flask Application**
+    - **Run Flask App**: Ensured the Flask app runs on port 5001:
+      ```python
+      if __name__ == "__main__":
+            app.run(port=5001)
+      ```
+
+8. **Check Docker Logs**
+    - **View Logs**: Checked the logs of the running Docker container to ensure everything is working correctly:
+      ```sh
+      docker logs <container_id>
+      ```
+
+9. **Access Application**
+    - **Access Routes**: Accessed the application via different routes to see the real-time data for each city:
+      - `http://localhost:5001/calgary`
+      - `http://localhost:5001/edmonton`
+      - `http://localhost:5001/vancouver`
+      - `http://localhost:5001/montreal`
+      - `http://localhost:5001/ottawa`
+      - `http://localhost:5001/hamilton`
+      - `http://localhost:5001/london`
+
+Everything should now be set up and running correctly. If you have any further questions or need additional assistance, feel free to ask!
