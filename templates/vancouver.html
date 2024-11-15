@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vancouver Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="App">
+        <header class="App-header">
+            <h1>vancouver Data</h1>
+            <p id="data"></p>
+        </header>
+    </div>
+    <script>
+        fetch('/vancouver')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('data').innerText = JSON.stringify(data, null, 2);
+            });
+    </script>
+</body>
+</html>
