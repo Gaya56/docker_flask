@@ -1,8 +1,14 @@
+import os
 import random
 import time
 from flask import Flask, jsonify, render_template
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 def generate_fake_data(city):
     data = {
