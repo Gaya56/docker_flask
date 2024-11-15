@@ -1,5 +1,14 @@
-Sure, here's a summary of everything we did to set up and run your Flask application with Docker:
+Access the application in your browser to verify it is running correctly:
 
+- **Calgary**: `http://localhost:5001/calgary`
+- **Edmonton**: `http://localhost:5001/edmonton`
+- **Vancouver**: `http://localhost:5001/vancouver`
+- **Montreal**: `http://localhost:5001/montreal`
+- **Ottawa**: `http://localhost:5001/ottawa`
+- **Hamilton**: `http://localhost:5001/hamilton`
+- **London**: `http://localhost:5001/london`
+
+These steps will help you confirm that everything is set up and running correctly. If you encounter any issues, please let me know!
 1. **Set Up Docker Environment**
     - **Install Docker**: Installed Docker in your Codespace environment.
     - **Verify Installation**: Verified Docker installation with `docker --version`.
