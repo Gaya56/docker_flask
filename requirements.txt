@@ -1,1 +1,3 @@
-Flask==2.3.2
+Flask==2.3.2               # Flask framework for building the app
+azure-eventhub==5.10.1     # Azure Event Hub integration
+python-dotenv==1.0.0       # To load .env files
