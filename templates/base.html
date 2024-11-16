@@ -1,1 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ city_name }} Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="App">
+        <header class="App-header">
+            <h1>{{ city_name }} Data</h1>
+            <pre id="data">{{ city_data | tojson(indent=2) }}</pre>
+        </header>
+    </div>
+</body>
+</html>
 
