@@ -45,6 +45,7 @@ def send_to_event_hub(data):
     except Exception as e:
         print(f"Error sending data to Event Hub: {e}")
 
+# Routes for each city
 @app.route('/data')
 def get_data():
     """
@@ -54,14 +55,68 @@ def get_data():
     send_to_event_hub(data)
     return jsonify(data)
 
-@app.route('/<city>')
-def city_route(city):
+@app.route('/calgary')
+def calgary():
     """
-    Generates and sends data for a specified city.
+    Generates and sends data for Calgary.
     """
-    data = generate_fake_data(city)
+    data = generate_fake_data('Calgary')
     send_to_event_hub(data)
-    return render_template(f'{city.lower()}.html', data=data)
+    return render_template('calgary.html', data=data)
+
+@app.route('/edmonton')
+def edmonton():
+    """
+    Generates and sends data for Edmonton.
+    """
+    data = generate_fake_data('Edmonton')
+    send_to_event_hub(data)
+    return render_template('edmonton.html', data=data)
+
+@app.route('/vancouver')
+def vancouver():
+    """
+    Generates and sends data for Vancouver.
+    """
+    data = generate_fake_data('Vancouver')
+    send_to_event_hub(data)
+    return render_template('vancouver.html', data=data)
+
+@app.route('/montreal')
+def montreal():
+    """
+    Generates and sends data for Montreal.
+    """
+    data = generate_fake_data('Montreal')
+    send_to_event_hub(data)
+    return render_template('montreal.html', data=data)
+
+@app.route('/ottawa')
+def ottawa():
+    """
+    Generates and sends data for Ottawa.
+    """
+    data = generate_fake_data('Ottawa')
+    send_to_event_hub(data)
+    return render_template('ottawa.html', data=data)
+
+@app.route('/hamilton')
+def hamilton():
+    """
+    Generates and sends data for Hamilton.
+    """
+    data = generate_fake_data('Hamilton')
+    send_to_event_hub(data)
+    return render_template('hamilton.html', data=data)
+
+@app.route('/london')
+def london():
+    """
+    Generates and sends data for London.
+    """
+    data = generate_fake_data('London')
+    send_to_event_hub(data)
+    return render_template('london.html', data=data)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
