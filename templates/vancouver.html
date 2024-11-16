@@ -2,22 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vancouver Data</title>
+    <title>{{ city_name }} Data</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
     <div class="App">
         <header class="App-header">
-            <h1>vancouver Data</h1>
-            <p id="data"></p>
+            <h1>{{ city_name }} Data</h1>
+            <pre id="data">{{ city_data | tojson(indent=2) }}</pre>
         </header>
     </div>
-    <script>
-        fetch('/vancouver')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('data').innerText = JSON.stringify(data, null, 2);
-            });
-    </script>
 </body>
 </html>
