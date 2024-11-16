@@ -1,19 +1,19 @@
-import os
+from flask import Flask, render_template
 import random
 import time
-from flask import Flask, jsonify, render_template
-from dotenv import load_dotenv
 from azure.eventhub import EventHubProducerClient, EventData
+from dotenv import load_dotenv
+import os
 
-load_dotenv()  # Load environment variables from .env file
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
-# Azure Event Hub Configuration
+# Azure Event Hub configuration
 EVENT_HUB_CONNECTION_STRING = os.getenv("EVENT_HUB_CONNECTION_STRING")
 EVENT_HUB_NAME = os.getenv("EVENT_HUB_NAME")
+
 
 def generate_fake_data(city):
     """
@@ -28,6 +28,7 @@ def generate_fake_data(city):
         "timestamp": time.time()
     }
     return data
+
 
 def send_to_event_hub(data):
     """
@@ -45,78 +46,49 @@ def send_to_event_hub(data):
     except Exception as e:
         print(f"Error sending data to Event Hub: {e}")
 
-# Routes for each city
-@app.route('/data')
-def get_data():
-    """
-    Generates and sends data for Edmonton.
-    """
-    data = generate_fake_data("Edmonton")
-    send_to_event_hub(data)
-    return jsonify(data)
 
 @app.route('/calgary')
 def calgary():
-    """
-    Generates and sends data for Calgary.
-    """
     data = generate_fake_data('Calgary')
     send_to_event_hub(data)
-    return render_template('calgary.html', data=data)
+    return render_template('base.html', city_name='Calgary', city_data=data)
+
 
 @app.route('/edmonton')
 def edmonton():
-    """
-    Generates and sends data for Edmonton.
-    """
     data = generate_fake_data('Edmonton')
     send_to_event_hub(data)
-    return render_template('edmonton.html', data=data)
+    return render_template('base.html', city_name='Edmonton', city_data=data)
 
-@app.route('/vancouver')
-def vancouver():
-    """
-    Generates and sends data for Vancouver.
-    """
-    data = generate_fake_data('Vancouver')
-    send_to_event_hub(data)
-    return render_template('vancouver.html', data=data)
-
-@app.route('/montreal')
-def montreal():
-    """
-    Generates and sends data for Montreal.
-    """
-    data = generate_fake_data('Montreal')
-    send_to_event_hub(data)
-    return render_template('montreal.html', data=data)
-
-@app.route('/ottawa')
-def ottawa():
-    """
-    Generates and sends data for Ottawa.
-    """
-    data = generate_fake_data('Ottawa')
-    send_to_event_hub(data)
-    return render_template('ottawa.html', data=data)
 
 @app.route('/hamilton')
 def hamilton():
-    """
-    Generates and sends data for Hamilton.
-    """
     data = generate_fake_data('Hamilton')
     send_to_event_hub(data)
-    return render_template('hamilton.html', data=data)
+    return render_template('base.html', city_name='Hamilton', city_data=data)
+
 
 @app.route('/london')
 def london():
-    """
-    Generates and sends data for London.
-    """
     data = generate_fake_data('London')
     send_to_event_hub(data)
-    return render_template('london.html', data=data)
+    return render_template('base.html', city_name='London', city_data=data)
+
+
+@app.route('/montreal')
+def montreal():
+    data = generate_fake_data('Montreal')
+    send_to_event_hub(data)
+    return render_template('base.html', city_name='Montreal', city_data=data)
+
+
+@app.route('/vancouver')
+def vancouver():
+    data = generate_fake_data('Vancouver')
+    send_to_event_hub(data)
+    return render_template('base.html', city_name='Vancouver', city_data=data)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
+
