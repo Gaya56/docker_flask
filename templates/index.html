@@ -1,19 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-
+</head>
 <body>
     <div class="App">
         <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
+            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="GitHub Octocat Logo" />
+            <h1>Welcome to GitHub Codespaces with Flask</h1>
             <p>
                 GitHub Codespaces <span class="heart">♥️</span> Flask
             </p>
             <p class="small">
                 Edit <code>templates/index.html</code> and refresh to see your changes!
             </p>
+            <nav>
+                <ul class="city-links">
+                    <li><a href="/calgary">Calgary</a></li>
+                    <li><a href="/edmonton">Edmonton</a></li>
+                    <li><a href="/hamilton">Hamilton</a></li>
+                    <li><a href="/london">London</a></li>
+                    <li><a href="/montreal">Montreal</a></li>
+                    <li><a href="/vancouver">Vancouver</a></li>
+                </ul>
+            </nav>
         </header>
     </div>
 </body>
-
 </html>
