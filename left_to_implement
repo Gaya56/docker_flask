@@ -1,5 +1,17 @@
 Remaining Tasks in docker_flask Repository
 
+
+
+└── TO-DO
+    ├── Error Handling & Logging     ❌ (Not implemented yet)
+    ├── Unit Testing                 ❌ (Pending creation)
+    ├── Production Deployment        ❌ (Replace Flask server with gunicorn)
+    ├── CI/CD Setup                  ❌ (Docker Compose and GitHub Actions workflow)
+    ├── Power BI Integration         ❌ (Complete `/send_to_power_bi`)
+    ├── Security Enhancements        ❌ (Input validation, Key Vault integration)
+    └── Infrastructure as Code       ❌ (Use Terraform/ARM templates)
+
+
 Here’s a final comprehensive list of remaining tasks or enhancements to consider for the docker_flask repository:
 1. Error Handling and Logging
 
