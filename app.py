@@ -47,8 +47,19 @@ def send_to_event_hub(data):
         print(f"Error sending data to Event Hub: {e}")
 
 
+@app.route('/')
+def index():
+    """
+    Home route rendering the landing page.
+    """
+    return render_template('index.html', title='GitHub Codespaces ♥️ Flask')
+
+
 @app.route('/calgary')
 def calgary():
+    """
+    Route for Calgary, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('Calgary')
     send_to_event_hub(data)
     return render_template('base.html', city_name='Calgary', city_data=data)
@@ -56,6 +67,9 @@ def calgary():
 
 @app.route('/edmonton')
 def edmonton():
+    """
+    Route for Edmonton, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('Edmonton')
     send_to_event_hub(data)
     return render_template('base.html', city_name='Edmonton', city_data=data)
@@ -63,6 +77,9 @@ def edmonton():
 
 @app.route('/hamilton')
 def hamilton():
+    """
+    Route for Hamilton, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('Hamilton')
     send_to_event_hub(data)
     return render_template('base.html', city_name='Hamilton', city_data=data)
@@ -70,6 +87,9 @@ def hamilton():
 
 @app.route('/london')
 def london():
+    """
+    Route for London, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('London')
     send_to_event_hub(data)
     return render_template('base.html', city_name='London', city_data=data)
@@ -77,6 +97,9 @@ def london():
 
 @app.route('/montreal')
 def montreal():
+    """
+    Route for Montreal, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('Montreal')
     send_to_event_hub(data)
     return render_template('base.html', city_name='Montreal', city_data=data)
@@ -84,6 +107,9 @@ def montreal():
 
 @app.route('/vancouver')
 def vancouver():
+    """
+    Route for Vancouver, generating fake data and sending it to Event Hub.
+    """
     data = generate_fake_data('Vancouver')
     send_to_event_hub(data)
     return render_template('base.html', city_name='Vancouver', city_data=data)
@@ -91,4 +117,5 @@ def vancouver():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
+
 
