@@ -1,0 +1,56 @@
+Remaining Tasks in docker_flask Repository
+
+Here’s a final comprehensive list of remaining tasks or enhancements to consider for the docker_flask repository:
+1. Error Handling and Logging
+
+    Purpose: Ensure that the app handles failures gracefully and logs errors for debugging.
+    Specific Tasks:
+        Add error handling in send_to_event_hub (e.g., retry logic for Event Hub connectivity).
+        Integrate a logging library (e.g., logging) to record info, warnings, and errors in the app.
+
+2. Unit Testing
+
+    Purpose: Add tests to validate key functionality and ensure the app behaves as expected.
+    Specific Tasks:
+        Create unit tests for generate_fake_data and API routes (/calgary, /edmonton, etc.).
+        Use a framework like pytest and mock Event Hub for testing send_to_event_hub.
+
+3. Optimize Production Deployment
+
+    Purpose: Make the app suitable for production environments.
+    Specific Tasks:
+        Replace the Flask development server with a WSGI server like gunicorn.
+        Add a gunicorn entry in the Dockerfile to handle production deployment.
+
+4. Improve Docker and CI/CD
+
+    Purpose: Streamline deployment and ensure consistency.
+    Specific Tasks:
+        Create a docker-compose.yml file to manage the app and dependencies (e.g., database, Azure integration).
+        Set up a GitHub Actions workflow for CI/CD (e.g., build, test, and deploy the Docker image).
+
+5. Documentation
+
+    Purpose: Ensure the repository is well-documented for contributors and maintainers.
+    Specific Tasks:
+        Expand the README.md with detailed setup, troubleshooting, and contribution guidelines.
+        Add diagrams or charts for architecture and data flow to improve clarity.
+
+6. Power BI Integration
+
+    Purpose: Complete the placeholder /send_to_power_bi route and integrate with Power BI for visualization.
+    Specific Tasks:
+        Implement the logic in power_bi_integration.py to push data to Power BI dashboards.
+
+7. Security Enhancements
+
+    Purpose: Protect sensitive data and ensure best practices.
+    Specific Tasks:
+        Validate and sanitize user inputs for all routes.
+        Ensure sensitive information is properly stored and accessed using Azure Key Vault.
+
+8. Infrastructure as Code
+
+    Purpose: Automate and manage the app’s infrastructure.
+    Specific Tasks:
+        Use tools like Terraform or Azure Resource Manager (ARM) templates to deploy Azure Event Hub and Key Vault.
